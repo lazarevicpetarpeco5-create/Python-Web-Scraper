@@ -1,0 +1,135 @@
+<!DOCTYPE html >
+<html lang="sl"><head><title>IUM Prijava</title><meta content="width=device-width; initial-scale=1.0; target-densityDpi:device-dpi; " name="viewport"/><meta content="text/html; charset=utf-8" http-equiv="Content-Type"/><meta content="sl" http-equiv="Content-Language"/><meta content="yes" name="apple-mobile-web-app-capable"/><link href="/css/MainBody.css?t=1771414514" rel="stylesheet" type="text/css"/><link href="/css/WWWPages/MainIUM.css?t=1771414514" rel="stylesheet" type="text/css"/><script charset="UTF-8" src="https://c.inmaster.si/Scripts/AllSS-1.0.10.js" type="text/javascript"></script><link href="/favicon.ico" rel="SHORTCUT ICON"/><base href="https://app.cdi-univerzum.si/"/><meta content="Center za dopisno izobraževanje Univerzum, Grošljeva ulica 4, 1000 Ljubljana - http://www,cdi-univerzum.si" name="author"/><meta content="Aplikacija DeskWM" name="keywords"/><meta content="BoogieBuilder5.01 on DeskWM content generator platform engine. www.deskwm.com" name="generator"/>
+<script language="javascript" type="text/javascript">
+			var MouseOnMenuBgColor = "#dbd7c3" ;
+			var MouseOnMenuBorderColor = "#434039" ;
+		</script>
+</head><body leftmargin="0" marginheight="0" marginwidth="0" topmargin="0"><div align="center" class="ajaxWait" id="MaskaDelamStran" style="display:none;" valign="center"><img src="/P/ajax-loader.gif"/></div><div align="center" class="ajaxWait" id="MaskaDelam" style="display:none;" valign="center"><img src="/P/ajax-loaderA.gif"/></div><div align="center" class="ajaxWait" id="MaskaDelamDWMjr" style="display:none;" valign="center"><img src="/P/ajax-loader.gif"/></div><div align="center" class="ajaxWait" id="MaskaDelamDWMjrSmall" style="display:none;" valign="center"><img src="/P/ajax-loader32.gif"/></div><div align="center" class="ajaxWait" id="MaskaDelamDWMjrSmall22" style="display:none;" valign="center"><img src="/P/ajax-loader22.gif"/></div><div class="formLoadingDiv" id="formLoadingDiv" style="display: none; position: absolute; z-index: 999999; width: 100%; height: 100%; opacity: 0.15; background-color: rgb(255, 255, 255); left: 0px; top: 0px;"></div><link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:400,400italic,700,700italic&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css"/>
+<div id="pozicija">
+<div id="header"><div class="zgornji_meni">
+<div class="zg_meni_on"><a href="http://www.cdi-univerzum.si" target="_new">CDI Univerzum</a></div>
+<div class="zg_meni_off"><a href="http://moodle.cdi-univerzum.si" target="_new">moodle</a></div>
+<div class="zg_meni_on"><a dwm="dp://400000" href="/S400000/IUM+Prijava">ium</a></div>
+<div class="ok_linija"></div>
+<div class="zg_meni_off"><a dwm="dp://7000" href="/S7000/Zaposlimo+">zaposlimo</a></div>
+<div class="ok_linija"></div>
+</div>
+<div class="iskanje_h"><form action="S50/Stranivid" id="formahitroisci" method="get" name="formahitroisci">
+<input name="language" type="hidden" value="sl"/><input name="iscipocelibazi" type="hidden" value="1"/>
+<div class="poljeIsci"><input name="PageID" type="hidden" value="50"/><input class="IskanjePS" name="searchstr" onfocus="this.value=''" type="text" value="išči"/></div>
+<div class="gumbIsci"><a href="javascript:document.getElementById('formahitroisci').submit();"><img border="0" src="P/Pix/MainDesign/GumbIsci.png"/></a></div><div class="clear"></div></form></div>
+<div class="logotip"><a dwm="dp://1" href="/S1/CDI+Univerzum"><img alt="CDI univerzum" height="128" src="/P/TinyImages/R/3_CDI_univerzum.png" title="CDI univerzum" width="432"/></a></div>
+<div class="spodnji_meni">
+<div class="sp_meni_off"><a dwm="dp://6000" href="/S6000/Formalno+izobra%C5%BEevanje">Formalno izobraževanje</a></div>
+<div class="sp_meni_off"><a dwm="dp://5000" href="/S5000/Neformalno+izobra%C5%BEevanje">Neformalno izobraževanje</a></div>
+<div class="sp_meni_off"><a dwm="dp://4000" href="/S4000/E-izobra%C5%BEevanje">E-izobraževanje</a></div>
+<div class="sp_meni_off"><a dwm="dp://2000" href="/S2000/Projekti+">Projekti </a></div>
+<div class="sp_meni_off"><a dwm="dp://3000" href="/S3000/Novice">Novice</a></div>
+<div class="sp_meni_off"><a dwm="dp://1000" href="/S1000/O+univerzumu">O univerzumu</a></div>
+<div class="ok_linija"></div>
+</div></div>
+<div id="sredina">
+<div id="vsebina"><div class="PrijavnaStran"><div>Do te strani nimate dostopa. Za dostop se prijavite.
+</div><div><script language="javascript" src="/Scripts/md5.js" type="text/javascript"></script>
+<script language="JavaScript">
+	function onformsubmit() {
+		ShowWait() ;
+
+		var url = "/AJAX.php?C=ReqChap";
+		new Ajax.Request(url, {
+			method: 'get',
+			onSuccess: function(transport) {
+				var Res = transport.responseJSON ;
+				HideWait() ;
+				if (Res.error) {
+					alert(Res.error) ;
+				} else {
+					// Dobili smo CHAP - sedaj kriptiramo geslo in ga pošljemo nazaj na strežnik
+					CHAP = String(Res.Chap).trim() ;
+					Pass = String($('pass').value).trim() ;
+
+					TempCalc = calcMD5(Pass) ;
+					TempCalc = TempCalc + CHAP ;
+					$('password').value = calcMD5(TempCalc);
+					$('pass').value = "" ;
+					$('LoginOsnovnaForma').submit() ;
+				}
+			}
+		});
+		return false ;
+	}
+</script>
+<form action="/VerifyLogin.php" id="LoginOsnovnaForma" method="POST" onsubmit="return onformsubmit();">
+<table cellpadding="5" cellspacing="0" class="PrijavnoOkno">
+<input id="CHAP" name="CHAP" type="hidden" value=""/>
+<input name="PageToGoF" type="hidden" value="/S400000/"/>
+<input name="PageToGoErr" type="hidden" value="/S400000/"/>
+<input id="password" name="password" type="hidden"/>
+<tr>
+<td align="right">Uporabniško ime</td>
+<td><input autocomplete="off" class="InputPrijava" id="username" name="username" type="text"/></td>
+<tr>
+<tr>
+<td align="right">Geslo</td>
+<td><input autocomplete="off" class="InputPrijava" id="pass" name="pass" type="password"/></td>
+<tr>
+<tr>
+<td align="right" colspan="2"><input class="GumbPrijava" type="submit" value="Prijavi"/></td>
+</tr>
+</tr></tr></tr></tr></table>
+</form></div>
+</div>
+<div class="content">
+<div id="prijava_pomoc">
+<div class="PopUpCon" id="PopUp" style="display:none;"><p>V aplikacijo se prijavite tako, da vpišete uporabniško ime in geslo in kliknete gumb »Prijavi«</p>
+<p>Sistem loči med velikimi in malimi črkami, tako, da uporabniško ime in geslo vpišete natanko tako, kot vam je bilo posredovano.</p></div>
+<a href="javascript:void(0)" id="pomoc_txt">Potrebujete pomoč?</a>
+</div>
+</div>
+<script defer="" type="text/javascript">
+	var timePopUpOut;
+	document.observe('dom:loaded',openElementPopUp);
+	function openElementPopUp() {
+
+		// $('prijava_pomoc').select('a').each(function(el){
+			el = $('pomoc_txt') ;
+			var prevEl = $(el.id).previous('div');
+			var aHeight = $(el.id).getHeight()/2;
+
+			$(el.id).observe('mouseover', function(){
+				$(el.id).absolutize();
+				clearTimeout(timePopUpOut);
+				$(el.id).previous('div').setAttribute("style","bottom:"+aHeight+"; display:none;");
+				$(el.id).previous('div').appear({ duration: 0.25 });
+			});
+
+			$(prevEl).observe('mouseover', function(){
+				clearTimeout(timePopUpOut);
+			});
+
+			$(el.id).observe('mouseout', function(){	
+                                 timePopUpOut = setTimeout("ShowHidePopUp('pomoc_txt')",100);
+			});
+
+			$(prevEl).observe('mouseout', function(){
+                                 timePopUpOut = setTimeout("ShowHidePopUp('pomoc_txt')",100);
+			});
+		// });
+
+	}
+
+	function ShowHidePopUp(el) {	
+               $(el).previous('div').fade({ duration: 0.25 });
+	}
+
+</script>
+</div>
+</div>
+<div id="footer">CDI Univerzum ©2013</div>
+</div><div id="iframeTemplate" style="display:none;">
+<!--
+					<html><body onload="window.top.NavigateHistory()"><p id="historyMessage">%message%</p></body></html>
+				-->
+</div>
+<iframe id="historyFrame" style="display:none;"></iframe></body></html>

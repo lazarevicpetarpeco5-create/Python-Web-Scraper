@@ -12,4 +12,7 @@ def parse_html(response_text_html):
  parsed_html = BeautifulSoup (response_text_html, "html.parser")
  return parsed_html
 
-
+def store_html(parsed_html):
+  file_path = Path("database/data.html")
+  file_path.write_text(str(parsed_html))
+ 
